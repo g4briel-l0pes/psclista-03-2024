@@ -1,29 +1,27 @@
 import java.util.Scanner;
 
 public class Atividade1 {
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
+        int[] numeros = new int[12];
+        int contador = 0;
+        int soma = 0;
 
-        System.out.println("Digite o primeiro número:");
-        double numero1 = scanner.nextDouble();
+        System.out.println("Digite 12 temperaturas diárias entre 4° e 10°");
 
-        System.out.println("Digite o segundo número:");
-        double numero2 = scanner.nextDouble();
+        while (contador < 12) {
+            int numero = scanner.nextInt();
+            if (numero >= 4 && numero <= 10) {
+                numeros[contador] = numero;
+                soma += numero;
+                contador++;
+            } else {
+                System.out.println("Temperatura inválida.");
+            }
+        }
 
-        System.out.println("Digite o terceiro número:");
-        double numero3 = scanner.nextDouble();
-
-        System.out.println("Você digitou os números: " + numero1 + ", " + numero2 + ", " + numero3);
-        
-        double maiorNumero = Math.max(numero1, Math.max(numero2, numero3));
-        System.out.println("O maior número é: " + maiorNumero);
-        
-        double menorNumero = Math.min(numero1, Math.min(numero2, numero3));
-        System.out.println("O menor número é: " + menorNumero);
-        
-        double media = (numero1 + numero2 + numero3) / 3;
-        System.out.println("A média aritmética dos números é: " + media);
-
-        scanner.close();
+        double media = (double) soma / 12;
+        media = Math.round(media * 10.0) / 10.0; // Arredondando para 1 casa decimal
+        System.out.println("A média de hoje das temperaturas é: " + media + "°C");
     }
 }
